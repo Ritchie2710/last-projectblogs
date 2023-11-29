@@ -5,10 +5,9 @@ export default async function comments({ postSlug }: { postSlug: string }) {
   let comments = [];
 
   try {
-    const commentsResult = await fetch(
-      `${WEBSITE_URL}/api/comments/${postSlug}`,
-      { next: { revalidate: 5 } }
-    );
+    const commentsResult = await fetch(`${WEB_SITE}/api/comments/${postSlug}`, {
+      next: { revalidate: 5 },
+    });
     const response = await commentsResult.json();
     console.log(response);
     comments = response.comments.rows;
